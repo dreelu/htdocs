@@ -1,25 +1,44 @@
-<?php
-include("connection.php");
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
 
-class ProcessaLogin {
+        <div>
+            <header>
+                <h1>SISTEMA INTEGRADO DE CADASTRO</h1>
+                <p>Portal de Autenticação Institucional</p>
+            </header>
+        </div>
 
-    public $login;
-    public $senha;
+        <div class="content">
+            <section class="card">
+                <div class="card-header">
+                    Cadastro de Usuário
+                </div>
 
-    function processa($p1, $p2) {
-        $this->login = $p1;
-        $this->senha = $p2;
-    }
-}
+                <form action="controller.processaRegistro.class.php" method="post">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="login">
 
-$infos = new ProcessaLogin();
-$infos->processa($_GET['login'], $_GET['senha']);
+                    <label for="novaSenha">Senha</label>
+                    <input type="password" id="senha">
 
-$sql = "INSERT INTO usuarios (login, senha_hash) VALUES (:login, :senha_hash)";
-$stmt = $pdo->prepare($sql);
+                    <button type="submit">Cadastrar</button>
+                </form>
+            </section>
+        </div>
+        <a href="login.php">Já possui conta?</a>
 
-$stmt->execute([
-    'login' => $infos->login,
-    'senha_hash' => $infos->senha
-]);
-?>
+        <footer>
+            © 2025 Sistema Institucional - Todos os direitos reservados
+        </footer>
+
+    </div>
+</body>
+</html>

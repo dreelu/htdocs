@@ -1,32 +1,47 @@
-<?php
-    include("connection.php");
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Acesso</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-    class processaLogin {
+    <div class="container">
 
-        public $login;
-        public $senha;
+        <header>
+            <h1>SISTEMA INTEGRADO DE CADASTRO</h1>
+            <p>Portal de Autenticação Institucional</p>
+        </header>
 
-        function processa($p1, $p2) {
-            $this->login = $p1;
-            $this->senha = $p2;
-        }
-    }
+        <div class="content">
 
-    $infos = new processaLogin();
-    $infos->processa($_GET['login'], $_GET['senha']);
+            <section class="card">
+                <div class="card-header">
+                    Login do Usuário
+                </div>
 
-    $sql = "SELECT senha_hash FROM usuarios WHERE login = :login";
-    $stmt = $pdo->prepare($sql);
+                <form action="controller.processaLogin.class.php" method="post">
+                    <label for="login">E-mail</label>
+                    <input type="text" name="login">
 
-    $stmt->execute([
-        'login' => $infos->login,
-    ]);
+                    <label for="senha">Senha</label>
+                    <input type="password" name="senha">
 
-    $dados = $stmt->fetch();
-    echo $dados[0];
-    if ($dados[0] == $infos->senha) {
-        echo "Logado!";
-    } else {
-        echo "Algo deu errado no processo de Login.";
-    }
-?>
+                    <button type="submit">Entrar</button>
+                </form>
+            </section>
+
+        </div>
+
+        <a href="register.php">Não possui conta?</a>
+
+        <footer>
+            © 2025 Sistema Institucional - Todos os direitos reservados
+        </footer>
+
+    </div>
+
+</body>
+</html>
