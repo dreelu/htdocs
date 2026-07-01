@@ -22,9 +22,10 @@
         ]);
 
         $dados = $stmt->fetch();
-        echo $dados[0];
-        if ($dados[0] == $infos->senha) {
-            echo "Logado!";
+        $hash = $dados[0];
+
+        if (password_verify($infos->senha, $hash)) {
+            header("Location: main.php");
         } else {
             echo "Algo deu errado no processo de Login.";
         }

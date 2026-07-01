@@ -17,10 +17,12 @@
         $sql = "INSERT INTO usuarios (login, senha_hash) VALUES (:login, :senha_hash)";
         $stmt = $pdo->prepare($sql);
 
+        $senha_hash = password_hash($infos->senha, PASSWORD_DEFAULT);
+
         $stmt->execute([
             'login' => $infos->login,
-            'senha_hash' => $infos->senha,
+            'senha_hash' => $senha_hash,
         ]);
 
-        echo "Usuário registrado!";
+        header("Location: main.php")
 ?>

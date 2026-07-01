@@ -23,11 +23,11 @@
                 </div>
 
                 <form action="controller.processaRegistro.class.php" method="post">
-                    <label for="email">E-mail</label>
-                    <input type="email" id="login">
+                    <label for="login">E-mail</label>
+                    <input type="text" name="login">
 
-                    <label for="novaSenha">Senha</label>
-                    <input type="password" id="senha">
+                    <label for="senha">Senha</label>
+                    <input type="password" name="senha">
 
                     <button type="submit">Cadastrar</button>
                 </form>
