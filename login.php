@@ -29,7 +29,7 @@
         </form>
 
         <div class="registro">
-            <span>Ainda não tem conta?</span> <a href="registro.html">Registre-se Aqui!</a>
+            <span>Ainda não tem conta?</span> <a href="register.php">Registre-se Aqui!</a>
         </div>
     </main>
 </body>
