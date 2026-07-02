@@ -13,12 +13,14 @@
             <h1>Registro</h1>
             <p class="msg-instrucao">Preencha seus dados para criar uma conta</p>
             <div class="input-box">
-                <input placeholder="E-mail" type="email" required class="login-input">
+                <label for="login"></label>
+                <input placeholder="E-mail" type="email" class="login-input" name="login" required >
                 <i class="fa-solid fa-user"></i>
             </div>
 
             <div class="input-box">
-                <input placeholder="Senha" type="password" required class="password-input">
+                <label for="senha"></label>
+                <input placeholder="Senha" type="password" class="password-input" name="senha" required >
                 <i class="fa-solid fa-lock"></i>
             </div>
 
