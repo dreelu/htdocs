@@ -1,51 +1,38 @@
-<?php
-
-?>
-
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sistema de Acesso</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style-login.css">
+    <title>Login</title>
 </head>
 <body>
+    <main>
+        <form action="controller.processaLogin.class.php" method="post">
+            <h1>Login</h1>
+            <p class="msg-instrucao">Preencha seus dados para continuar</p>
+            <div class="input-box">
+                <label for="login"></label>
+                <input placeholder="E-mail" type="email" class="login-input" name="login" required >
+                <i class="fa-solid fa-user"></i>
+            </div>
 
-    <div class="container">
+            <div class="input-box">
+                <label for="senha"></label>
+                <input placeholder="Senha" type="password" class="password-input" name="senha" required >
+                <i class="fa-solid fa-lock"></i>
+            </div>
 
-        <header>
-            <h1>SISTEMA INTEGRADO DE CADASTRO</h1>
-            <p>Portal de Autenticação Institucional</p>
-        </header>
+            <button class="submit-button" type="submit" value="Login">
+                Login
+                <i class="fa-solid fa-arrow-right" style="color: rgb(255, 255, 255);"></i>
+            </button>
+        </form>
 
-        <div class="content">
-
-            <section class="card">
-                <div class="card-header">
-                    Login do Usuário
-                </div>
-
-                <form action="controller.processaLogin.class.php" method="post">
-                    <label for="login">E-mail</label>
-                    <input type="text" name="login">
-
-                    <label for="senha">Senha</label>
-                    <input type="password" name="senha">
-
-                    <button type="submit">Entrar</button>
-                </form>
-            </section>
-
+        <div class="registro">
+            <span>Ainda não tem conta?</span> <a href="register.php">Registre-se Aqui!</a>
         </div>
-
-        <a href="register.php">Não possui conta?</a>
-
-        <footer>
-            © 2025 Sistema Institucional - Todos os direitos reservados
-        </footer>
-
-    </div>
-
+    </main>
 </body>
 </html>
