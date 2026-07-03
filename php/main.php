@@ -24,18 +24,12 @@ if (!isset($_SESSION['id'])) {
     </header>
 
     <nav>
-        <div class="menuContainer">
             <div class="navJanela" id="navCadastro">
                 Cadastro
             </div>
             <div class="navJanela" id="navProjeto">
                 Projeto
             </div>
-        </div>
-
-        <div>
-
-        </div>
     </nav>
 
     <main>
