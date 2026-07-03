@@ -1,3 +1,10 @@
+<?php
+    if (!isset($_SESSION['id'])) {
+        header("Location: main.php");
+        exit;
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
