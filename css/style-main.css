@@ -81,7 +81,7 @@ aside{
     background-color: rgb(209, 209, 209);
 }
 
-#reta{
+img{
     height: 20px;
 }
 
@@ -89,6 +89,11 @@ section{
     border: 1px solid black;
     width: 80%;
     margin-left: 50px;
-    border-radius: 5px;
+    border-radius: 12px;
     box-shadow: 1px 1px 10px rgb(131, 131, 131);
+}
+
+.jxgbox {
+    height: 100%;
+    width: 100%;
 }
