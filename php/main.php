@@ -22,8 +22,8 @@ if (!isset($_SESSION['id'])) {
     <header>
         <h1>Sistema de Registro de Pontos</h1>
         <div class="botao" id="botaoSair">
-            <img src="../assets/img/logout.png" alt="logout">
             <span>Sair</span>
+            <i class="fa-solid fa-arrow-right-from-bracket" style="color: rgb(255, 255, 255);"></i>
         </div>
     </header>
 
@@ -55,7 +55,7 @@ if (!isset($_SESSION['id'])) {
         </aside>
 
         <section class="planoCartesiano">
-             <div id="box" class="jxgbox"></div>
+            <div id="box" class="jxgbox"></div>
             <script defer src="../js/script-main.js">
 
             </script>

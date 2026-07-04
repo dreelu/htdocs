@@ -11,6 +11,7 @@ header{
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
 
     margin-top: 0;
     color: rgb(0, 0, 0);
@@ -87,6 +88,26 @@ aside{
 
 img{
     height: 20px;
+}
+
+#botaoSair{
+    background-color: rgb(36, 111, 252);
+    color: white;
+    font-weight: 700;
+    display: flex;
+    flex-direction: row;
+    width: 100px;
+    border-radius: 5px;
+    height: fit-content;
+    margin-right: 20px;
+}
+
+#botaoSair:hover{
+    background-color: rgb(71, 136, 255);
+}
+
+#botaoSair:active{
+    background-color: rgb(101, 155, 255);
 }
 
 section{
