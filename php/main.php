@@ -14,8 +14,13 @@ if (!isset($_SESSION['id'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <link rel="stylesheet" href="../css/style-main.css">
-    <link rel="stylesheet" type="text/css" href="../css/jsxgraph.css">
-    <script defer src="../js/jsxgraphcore.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin=""/>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""></script>
     <title>Teste</title>
 </head>
 <body>
@@ -55,7 +60,7 @@ if (!isset($_SESSION['id'])) {
         </aside>
 
         <section class="planoCartesiano">
-            <div id="box" class="jxgbox"></div>
+            <div id="map" class="jxgbox"></div>
             <script defer src="../js/script-main.js">
 
             </script>

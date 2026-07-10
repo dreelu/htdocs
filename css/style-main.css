@@ -118,7 +118,7 @@ section{
     box-shadow: 1px 1px 10px rgb(131, 131, 131);
 }
 
-.jxgbox {
+#map {
     height: 100%;
     width: 100%;
 }

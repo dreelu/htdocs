@@ -1,86 +1,51 @@
 
-let board = JXG.JSXGraph.initBoard(
-        'box', {
-            boundingbox: [-10, 10, 10, -10],
-            axis: true
-        }
-    );
 
-let ferramenta = null;
-let pontosReta = [];
-let pontosTriangulo = [];
-let contadorReta = 0
-let contadorTriangulo = 0;
-
-let botaoSair = document.getElementById('botaoSair');
-let botaoPonto = document.getElementById('botaoPonto');
-let botaoReta = document.getElementById('botaoReta');
-let botaoTriangulo = document.getElementById('botaoTriangulo');
-
-
-botaoSair.addEventListener('click', () => {
-    window.location.href = "logout.php";
-});
-
-botaoPonto.addEventListener('click', () => {
-    ferramenta = 'ponto';
-});
-
-botaoReta.addEventListener('click', () => {
-    ferramenta = 'reta';
-});
-
-botaoTriangulo.addEventListener('click', () => {
-    ferramenta = 'triangulo';
-});
-
-board.on('up', function (e) {
-
-    if (ferramenta == 'triangulo') console.log("krl")
-
-    //CRIAR PONTO
-    if (ferramenta == 'ponto') {
-        const coords = board.getUsrCoordsOfMouse(e);
-        board.create('point', coords);
-
-        ferramenta = null;
-    }
-
-
-    // CRIAR RETA
-    if (ferramenta == 'reta') {
-        const COORDENADA = board.getUsrCoordsOfMouse(e);
-        const PONTO = board.create('point', COORDENADA);
+var map = L.map('map').setView([-5.073709, -42.831378], 18);
         
-        pontosReta[contadorReta] = PONTO;
-        contadorReta++;
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 24,
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(map);
+        
+        let pontos = [];
+        let marcadores = [];
+        let polygons = []
 
-        if (contadorReta > 1) {
-            board.create('segment', [pontosReta[0],pontosReta[1]]);
+        // Pega a coordenada do click, adiciona um marcador e guarda ambos em arrays
+        function onMapClick(e) {
+            var marker = L.marker(e.latlng).addTo(map);
+            var point = e.latlng;
+            pontos.push(point);
+            marcadores.push(marker);
 
-            ferramenta = null
-            contadorReta = 0
-            pontosReta.size = 0 //"limpar" array
+
+            /*
+            Se existirem 3 pontos e 3 marcadores:
+                - Criará um polygono com os 3 pontos
+                - Remove todos os marcadores e pontos salvos em seus respectivos arrays
+                - Pegará as coordenadas do baricentro e adiciona um marcador
+                - Adiciona o marcador e a coordenada do baricentro nos arrays
+            */
+            
+            if (pontos.length == 3 && marcadores.length == 3) {
+                polygons.forEach(polygon => map.removeLayer(polygon));
+                let polygon = L.polygon([pontos[0], pontos[1], pontos[2]], { color: 'red', fill: true }).addTo(map);
+                polygons.push(polygon)
+
+                marcadores.forEach(marker => 
+                    map.removeLayer(marker)
+                );
+                marcadores.length = 0;
+                pontos.length = 0;
+
+                let marker = L.marker(polygon.getCenter()).addTo(map);
+                let point = polygon.getCenter();
+
+                pontos.push(point);
+                marcadores.push(marker);
+            }
         }
-    }
-
-    // CRIAR TRIANGULO
-    if (ferramenta == 'triangulo') {
-
-        const COORDENADA = board.getUsrCoordsOfMouse(e);
-        const PONTO = board.create('point', COORDENADA);
-
-        pontosTriangulo[contadorTriangulo] = PONTO;
-        contadorTriangulo++;
-
-        if (contadorTriangulo > 2) {
-            board.create('polygon', [pontosTriangulo[0], pontosTriangulo[1], pontosTriangulo[2]]);
-
-            ferramenta = null;
-            contadorTriangulo = 0;
-            pontosTriangulo.size = 0; //"limpar" array
-        }
-    }
 
 
-});
+
+        map.on('click', onMapClick);
