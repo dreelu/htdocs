@@ -1,8 +1,3 @@
-console.log("inicializando mapa")
-document.querySelectorAll('#map')
-
-const div = document.getElementById("map");
-console.log(div._leaflet_id);
 
 var map = L.map('map').setView([-5.073709, -42.831378], 18);
 {     
