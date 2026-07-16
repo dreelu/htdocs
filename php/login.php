@@ -1,6 +1,6 @@
 <?php
     if (isset($_SESSION['id'])) {
-        header("Location: main.php");
+        header('Location: /main');
         exit;
     }
 ?>
@@ -16,7 +16,7 @@
 </head>
 <body>
     <main>
-        <form action="controller.processaLogin.class.php" method="post">
+        <form action="/login" method="post">
             <h1>Login</h1>
             <p class="msg-instrucao">Preencha seus dados para continuar</p>
             <div class="input-box">

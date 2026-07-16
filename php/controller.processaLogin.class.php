@@ -31,7 +31,7 @@
 
         $_SESSION['id'] = $dados[1];
 
-        header("Location: main.php");
+        header("Location: /main");
         exit;
 
     } else {

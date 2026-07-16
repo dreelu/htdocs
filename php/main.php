@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['id'])) {
-    header("Location: login.php");
+    header('Location: /login');
     exit;
 }
 ?>
@@ -21,6 +21,7 @@ if (!isset($_SESSION['id'])) {
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
         integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
         crossorigin=""></script>
+    <script defer src="../js/script-utilities-main.js"></script>
     <title>Teste</title>
 </head>
 <body>
@@ -61,9 +62,7 @@ if (!isset($_SESSION['id'])) {
 
         <section class="planoCartesiano">
             <div id="map" class="jxgbox"></div>
-            <script defer src="../js/script-main.js">
-
-            </script>
+            <script src="../js/script-leaflet-main.js"></script>
         </section>
     </main>
 </body>
