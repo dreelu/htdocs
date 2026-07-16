@@ -1,5 +1,5 @@
 
-var map = L.map('map').setView([-5.073709, -42.831378], 18);
+let map = L.map('map').setView([-5.073709, -42.831378], 18);
 {     
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         maxZoom: 24,
@@ -12,8 +12,8 @@ var map = L.map('map').setView([-5.073709, -42.831378], 18);
 
     // Pega a coordenada do click, adiciona um marcador e guarda ambos em arrays
     function onMapClick(e) {
-        var marker = L.marker(e.latlng).addTo(map);
-        var point = e.latlng;
+        let marker = L.marker(e.latlng).addTo(map);
+        let point = e.latlng;
         pontos.push(point);
         marcadores.push(marker);
 
