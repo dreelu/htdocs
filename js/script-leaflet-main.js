@@ -20,24 +20,29 @@ let map = L.map('map').setView([-5.073709, -42.831378], 18);
 
 {     
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        maxZoom: 24,
+        maxZoom: 19,
         attribution: '&copy; OpenStreetMap contributors'
     }).addTo(map);
     
     let pontos = [];
     let pontosRetas = [];
     let pontosTriangulos = [];
+    let pontosGerais = [];
+
     let marcadores = [];
     let marcadoresRetas = [];
     let marcadoresTriangulos = [];
+
     let triangulos = [];
 
-    // Pega a coordenada do click, adiciona um marcador e guarda ambos em arrays
+    const TOLERANCIA = 15; //pixels
+
     function onMapClick(e) {
         if (tool === "ponto") {
             let point = e.latlng;
             let marker = L.marker(point).addTo(map);
             pontos.push(point);
+            pontosGerais.push(point);
             marcadores.push(marker);
 
             tool = null;
@@ -65,11 +70,28 @@ let map = L.map('map').setView([-5.073709, -42.831378], 18);
 
         if (tool === "triangulo") {
 
+            const clickPoint = map.latLngToContainerPoint(e.latlng);
+            let pontoEncontrado = null;
 
-            let point = e.latlng;
-            let marker = L.marker(point).addTo(map);
-            pontosTriangulos.push(point);
-            marcadoresTriangulos.push(marker);
+            pontosGerais.forEach(ponto => {
+                const markerPoint = map.latLngToContainerPoint(ponto);
+
+                if (clickPoint.distanceTo(markerPoint) < TOLERANCIA) {
+                    pontoEncontrado = ponto;
+                }
+            })
+
+            if (pontoEncontrado) {
+                pontosTriangulos.push(pontoEncontrado);
+                const marker = L.marker(pontoEncontrado);
+                marcadoresTriangulos.push(marker);
+            } else {
+                const point = e.latlng;
+                const marker = L.marker(point).addTo(map);
+                pontosTriangulos.push(point);
+                marcadoresTriangulos.push(marker);
+            }
+
 
             if (pontosTriangulos.length >= 3 && marcadoresTriangulos.length >= 3) {
                 let polygon = L.polygon(pontosTriangulos).addTo(map);
